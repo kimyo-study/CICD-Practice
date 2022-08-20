@@ -1,0 +1,35 @@
+name: kimyo first ci
+
+on:
+  pull_request:
+    branches:
+      - "develop*"
+      - "main*"
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: what is this
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+          
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Execute Gradle build
+        run: ./gradlew test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
