@@ -7,10 +7,10 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-    id 'org.asciidoctor.convert' version '1.5.8'
-    id 'com.google.cloud.tools.jib' version '3.2.1'
     id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+    id 'org.asciidoctor.convert' version '1.5.8'
     id 'com.epages.restdocs-api-spec' version '0.16.0'
+    id 'com.google.cloud.tools.jib' version '3.2.1'
 }
 
 group = 'com.kimyo'
@@ -84,7 +84,29 @@ task copyDocument(type: Copy) {
     from file("$buildDir/api-spec/openapi3.yaml")
     into file("src/main/resources/static/docs/.")
 }
-
+jib {
+    from {
+        image = "amazoncorretto:17.0.4-al2"
+        platforms {
+            platform {
+                architecture = "arm64"
+                os = "linux"
+            }
+            platform {
+                architecture = "amd64"
+                os = "linux"
+            }
+        }
+    }
+    to {
+        image = "kimziou77/${project.name}"
+        tags = ["${project.version.toString().toLowerCase()}"]
+    }
+    container {
+        environment = ["PROFILE": "local"]
+        jvmFlags = ['-Xms512m', '-Dspring.profiles.active=${PROFILE}']
+    }
+}
 //queryDSL
 def querydslDir = "$buildDir/generated/querydsl"
 querydsl {
