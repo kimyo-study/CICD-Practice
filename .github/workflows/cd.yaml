@@ -39,10 +39,10 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build jib
 
-#      - name: jenkins deploy
-#        uses: appleboy/jenkins-action@master
-#        with:
-#          url: ${{ secrets.JENKINS_WEBHOOK_URL }}
-#          user: ${{ secrets.JENKINS_USER }}
-#          token: ${{ secrets.JENKINS_USER_TOKEN }}
-#          job: ${{ secrets.JEKINS_JOB }}
+      - name: jenkins deploy
+        uses: appleboy/jenkins-action@master
+        with:
+          url: ${{ secrets.JENKINS_WEBHOOK_URL }}
+          user: ${{ secrets.JENKINS_USER }}
+          token: ${{ secrets.JENKINS_USER_TOKEN }}
+          job: ${{ secrets.JEKINS_JOB }}
