@@ -1,0 +1,8 @@
+branches:
+  - label: feat
+    prefix: feat/
+  - label: bug
+    prefix: fix/
+  - label: '*'
+    skip: true
+openPR: true
