@@ -1,10 +1,16 @@
 branchName: '${issue.number}-${issue.title}'
+
 branches:
   - label: feat
     prefix: feat/
+  - label: chore
+    prefix: chore/
   - label: bug
     prefix: fix/
   - label: '*'
     skip: true
-openPR: true
+    
+copyIssueLabelsToPR: true
+copyIssueAssigneeToPR: true
+openDraftPR: true
 autoCloseIssue: true
