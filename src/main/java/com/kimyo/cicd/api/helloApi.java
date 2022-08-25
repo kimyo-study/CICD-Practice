@@ -8,7 +8,7 @@ public class helloApi {
 
     @GetMapping("/")
     public String healthy(){
-        return "HELLO KIMYO";
+        return "HELLO KIMYO HI";
     }
 
 }
