@@ -45,4 +45,4 @@ jobs:
 #          url: ${{ secrets.JENKINS_WEBHOOK_URL }}
 #          user: ${{ secrets.JENKINS_USER }}
 #          token: ${{ secrets.JENKINS_USER_TOKEN }}
-#          job: ${{ secrets.JEKINS_PROD_JOB }}
+#          job: ${{ secrets.JEKINS_JOB }}
