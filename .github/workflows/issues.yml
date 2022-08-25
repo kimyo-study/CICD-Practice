@@ -12,7 +12,7 @@ jobs:
 #     if: github.event.action == 'assigned'
     steps:
       - name: create the issue branch
-        uses: robvanderleek/create-issue-branch@master
+        uses: robvanderleek/create-issue-branch@main
         id: create-issue-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
