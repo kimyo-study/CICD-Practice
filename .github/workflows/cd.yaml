@@ -37,7 +37,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Execute Gradle build
-        run: ./gradlew build jib
+        run: ./gradlew jib
 
       - name: jenkins deploy
         uses: appleboy/jenkins-action@master
